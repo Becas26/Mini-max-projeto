@@ -79,21 +79,31 @@ Jogo médio resultante da heurística + minimax
  
  
 2.	Uma rede neuronal com a seguinte estrutura: 
-a.	Camada de entrada (8,8,1) 
+a.	Camada de entrada (8,8,1)
+
 b.	Primeiro Bloco Convolucional com Conexão Residual e 
-Regularização L2 
-i. Duas camadas convolucionais 3x3 com 64 filtros e ativação ReLU. ii. As saídas dessas camadas são somadas para formar uma conexão residual. 
+Regularização L2
+
+i. Duas camadas convolucionais 3x3 com 64 filtros e ativação ReLU. ii. As saídas dessas camadas são somadas para formar uma conexão residual.
+
 iii. Após isso, é aplicada uma camada de pooling 2x2. 
+
 c.	Segundo Bloco Convolucional com Conexão Residual e 
 Regularização L2 (igual mas 128 filtros) 
+
 d.	Camada de flattening 
+
 e.	Bloco Totalmente Conectado com Conexão Residual, 
 Regularização L2 e Dropout 
+
 i. Duas camadas densas com 512 neurónios cada e ativação ReLU. ii. As camadas possuem dropout de 50% para prevenir overfitting. 
+
 iii. Uma conexão residual é adicionada entre as duas camadas densas. 
+
 f.	Camada de output 
  
  ![image](https://github.com/Becas26/Mini-max-projeto/assets/102540581/39c1e5f1-34fc-455e-b81c-04d0fc231620)
+ 
 ![image](https://github.com/Becas26/Mini-max-projeto/assets/102540581/009e3d70-f1c6-4196-b3f4-8c0ca9869f15)
 
  
@@ -107,7 +117,7 @@ Esta heurística é baseada em:
 
 ## Pontos de Vista de Especialistas em Relação ao Minimax no Contexto do Xadrez
 
-Perspetiva Positiva 
+# Perspetiva Positiva 
 
 Robustez Teórica:  Especialistas reconhecem que o Minimax é uma abordagem teoricamente sólida para a tomada de decisões em jogos. Garante uma escolha ótima de jogadas quando o jogo é totalmente explorado até o final, assumindo que ambos os jogadores jogam de forma ideal. 
 
@@ -115,7 +125,7 @@ Aplicabilidade Geral:  O Minimax não é específico para o xadrez; ele pode ser
 
 Base para Melhorias:  Embora o Minimax em sua forma básica possa ser impraticável para jogos complexos como o xadrez, ele serve como base para técnicas mais avançadas, como a poda alfa-beta e métodos de avaliação heurística. Estas técnicas melhoram a eficiência computacional do Minimax. 
 
-Perspetiva Negativa 
+# Perspetiva Negativa 
 
 Complexidade Exponencial: reconhecem que a complexidade do Minimax cresce exponencialmente com a profundidade da árvore de jogo. Para jogos complexos como o xadrez, explorar todas as possibilidades até o final é geralmente impraticável devido ao grande número de movimentos possíveis. 
 
@@ -138,10 +148,16 @@ Por outro lado, também poderíamos melhorar a nossa neural network, por exemplo
 
 ## Conclusões 
 
-Os resultados iniciais do minimax com heurística foram bastante bons, atingindo uma precisão que varia entre os 50-80%. No entanto os resultados iniciais com a neural network variaram entre os 0-10%. 
+Os resultados iniciais do minimax com heurística foram bastante bons, atingindo uma precisão que varia entre os 50-80%. 
+
+No entanto os resultados iniciais com a neural network variaram entre os 0-10%. 
 Depois de treinar em self-play durante 1000 jogos, a precisão aumentou consideravelmente, variando entre os 40-60%. 
-Experimentando heurísticas mais simples, os resultados são bastante piores que ambos estes resultados, permitindo-nos concluir que a função de avaliação é extremamente importante para o bom funcionamento do minimax. A ordenação de jogadas também é muito importante para a performance deste algoritmo, sendo que com um bom critério de ordenação existe muito mais pruning. 
-Verificamos também que utilizando uma heurística determinística podemos obter resultados muito bons imediatamente, mas utilizando uma neural network precisamos de bastante tempo de treino para igualar a performance. Xadrez é um jogo completo, pelo que em teoria uma estratégia que inclua uma heurística perfeita será muito melhor ou igual a uma estratégia que utiliza neural network para avaliação. Contudo, o xadrez é um jogo com um número de estados diferentes extremamente elevado, e as melhores heurísticas de hoje em dia têm, como demonstrado pelo whitepaper do AlphaZero e a performance de Leela-chess, obtido uma performance ligeiramente pior do que uma rede muito bem optimizada e treinada como evaluation policy. No nosso caso, a heurística não é muito ótima pelo que seria de esperar que a neural network eventualmente ultrapassasse o poder avaliativo da heurística, devido a ter modelado mais estratégias e nuances não consideradas na heurística.  
+Experimentando heurísticas mais simples, os resultados são bastante piores que ambos estes resultados, permitindo-nos concluir que a função de avaliação é extremamente importante para o bom funcionamento do minimax. 
+
+A ordenação de jogadas também é muito importante para a performance deste algoritmo, sendo que com um bom critério de ordenação existe muito mais pruning. 
+Verificamos também que utilizando uma heurística determinística podemos obter resultados muito bons imediatamente, mas utilizando uma neural network precisamos de bastante tempo de treino para igualar a performance. Xadrez é um jogo completo, pelo que em teoria uma estratégia que inclua uma heurística perfeita será muito melhor ou igual a uma estratégia que utiliza neural network para avaliação. 
+
+Contudo, o xadrez é um jogo com um número de estados diferentes extremamente elevado, e as melhores heurísticas de hoje em dia têm, como demonstrado pelo whitepaper do AlphaZero e a performance de Leela-chess, obtido uma performance ligeiramente pior do que uma rede muito bem optimizada e treinada como evaluation policy. No nosso caso, a heurística não é muito ótima pelo que seria de esperar que a neural network eventualmente ultrapassasse o poder avaliativo da heurística, devido a ter modelado mais estratégias e nuances não consideradas na heurística.  
 
 
 
