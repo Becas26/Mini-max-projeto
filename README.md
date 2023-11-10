@@ -38,14 +38,17 @@ O algoritmo minimax explora a árvore do jogo de forma recursiva, avaliando cada
 
 ## Vantagens vs Desvantagens
 
-Vantagens: 
+# Vantagens: 
+
 Garantia de Melhor Decisão: Se ambos os jogadores jogarem de forma ótima, o Minimax garantirá que a melhor decisão possível seja tomada em qualquer situação. 
 Conceitualmente simples: O conceito por trás do Minimax é relativamente simples de entender. Ele é baseado na ideia de considerar todos os movimentos possíveis e escolher o melhor para um jogador ou o pior para o oponente. 
+
 Amplamente aplicável: O Minimax não é limitado a jogos específicos; pode ser aplicado a uma variedade de problemas de tomada de decisão com estrutura semelhante a um jogo. 
  
  
  
-Desvantagens: 
+# Desvantagens: 
+
 Complexidade Exponencial: A principal desvantagem do Minimax é que sua complexidade aumenta exponencialmente à medida que o número de possíveis movimentos aumenta. Isso torna o Minimax impraticável para jogos muito complexos, a menos que sejam implementadas técnicas de otimização como a poda alfa-beta. 
  
 Não lida com incerteza: O Minimax não lida bem com situações onde há incerteza ou aleatoriedade envolvida, como em jogos de cartas onde as cartas são retiradas aleatoriamente. 
